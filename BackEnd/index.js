@@ -74,8 +74,13 @@ app.use(cors());
 const userLocations = {};
 
 app.post("/update-location", (req, res) => {
-  const { userId, latitude, longitude } = req.body;
-  userLocations[userId] = { latitude, longitude, timestamp: new Date() };
+  const { username, userId, latitude, longitude } = req.body;
+  userLocations[userId] = {
+    latitude,
+    longitude,
+    username,
+    timestamp: new Date(),
+  };
   console.log(userLocations);
   res.sendStatus(200);
 });
